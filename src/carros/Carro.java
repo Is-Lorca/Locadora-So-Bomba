@@ -1,6 +1,6 @@
 package carros;
 
-import exceptions.TipoSeguroInvalido;
+import exceptions.TipoSeguroInvalidoException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
@@ -104,6 +104,11 @@ public abstract class Carro {
     public LocalDate getUltManutencao() {
         return ultimManutencao;
     }
+    public String getStringUltManut(){
+        DateTimeFormatter formata = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+ 
+        return ultimManutencao.format(formata);
+    }
     public int getUltRevisao() {
         return ultimRevisao;
     }
@@ -113,7 +118,7 @@ public abstract class Carro {
 
     // Métodos que classes filhas devem ter:
     public abstract double calcularDiaria(int dias);
-    public abstract double calcularSeguro(String tipoSeguro) throws TipoSeguroInvalido;
+    public abstract double calcularSeguro(String tipoSeguro) throws TipoSeguroInvalidoException;
     public abstract double taxaHoraAtraso();
     public abstract void precisaManutencao(); // checa se carro precisa de manutencao e/ou revisao
     public abstract void manutencaoRealizada(String diaManutencao); // Usada para atualizar a data da manutenção

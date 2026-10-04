@@ -1,11 +1,11 @@
 package exceptions;
 
-public class TipoSeguroInvalido extends Exception{
-    public TipoSeguroInvalido(){
+public class TipoSeguroInvalidoException extends Exception{
+    public TipoSeguroInvalidoException(){
         super("Tipo de seguro inválido, favor escolher entre 'Básico', 'Intermediário' ou 'Premium'.");
     }
 
-    public TipoSeguroInvalido(String mensagem){
+    public TipoSeguroInvalidoException(String mensagem){
         super(mensagem);
     }
 }

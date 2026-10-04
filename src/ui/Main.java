@@ -3,31 +3,25 @@ package ui;
 import carros.Carro;
 import carros.Marca;
 import carros.Popular;
-import exceptions.TipoSeguroInvalido;
+import exceptions.TipoSeguroInvalidoException;
 
 public class Main {
-    public static void main(String[] args) throws TipoSeguroInvalido{
+    public static void main(String[] args) throws TipoSeguroInvalidoException{
         Marca mc = new Marca("Volkswagen");
         Carro carro = new Popular(
-            "123A", mc, "Gol G5", 2012, "Vermelho", 0, true, "Oriente", null, 0);
-
-        double precoDiaria = carro.calcularDiaria(12);
-
-        System.out.println(precoDiaria);
-
-        System.out.println(carro.toString());
-
-        carro.precisaManutencao();
-
-        carro.alterarDisponibilidade();
-
-        carro.registrarQuilometragem(10000);
-
-        System.out.println(carro.toString());
-
-        carro.precisaManutencao();
-            
+            "123A", mc, "Gol G5", 2012, "Vermelho", 0, true, "Oriente", "03/10/2024", 0);
         
+        // Checar cnh e cliente -> ver se funcionam
+
+        /* 
+        Faltam:
+        - Funcionario;
+        - Locação (muito importante);
+        - Exception -> VeiculoIndisponivelException e CNHVencidaException
+        - Interface Impressao;
+        - Classe de Persistencia;
+        */
+
         // Scanner scanner = new Scanner(System.in);
         // Carros[] cars = new Carros[3];
         // LinkedList<Marca> marcas = new LinkedList<>(); //LinkedList <Tipo de coisas> nomeVar = nova 

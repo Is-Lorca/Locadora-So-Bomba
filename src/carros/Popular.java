@@ -1,6 +1,6 @@
 package carros;
 
-import exceptions.TipoSeguroInvalido;
+import exceptions.TipoSeguroInvalidoException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
@@ -46,9 +46,9 @@ public class Popular extends Carro{
         Premium: Todos acima + incluisão dos vidros, pneus e assistência 24h;
     */ 
     @Override 
-    public double calcularSeguro(String tipoSeguro) throws TipoSeguroInvalido{
+    public double calcularSeguro(String tipoSeguro) throws TipoSeguroInvalidoException{
         if(tipoSeguro == null){
-            throw new TipoSeguroInvalido("O tipo não pode ser nulo.");
+            throw new TipoSeguroInvalidoException("O tipo não pode ser nulo.");
         }
 
         if(tipoSeguro.equals("Basico")){
@@ -61,7 +61,7 @@ public class Popular extends Carro{
             return 60.00;
         }
         else{
-            throw new TipoSeguroInvalido();
+            throw new TipoSeguroInvalidoException();
         }
     }
 
@@ -87,6 +87,9 @@ public class Popular extends Carro{
             long meses = ChronoUnit.MONTHS.between(getUltManutencao(), LocalDate.now());
             if (meses >= 12){
                 System.out.printf("O carro %s da placa %s precisa de manutenção.\n", getModelo(), getPlaca());
+            }
+            else{
+                System.out.println("O carro está com a manutenção em dia.");
             }
         }
         else{
