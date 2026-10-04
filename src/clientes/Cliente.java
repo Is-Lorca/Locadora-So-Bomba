@@ -49,11 +49,12 @@ public class Cliente {
 
         String telefoneLimpo = telefone.replaceAll("[^0-9]", "");
 
-        if (telefoneLimpo.length() != 11 ){
-            System.out.println("Tamanho de telefone inválido");
+        
+        if (telefoneLimpo.length() == 11 || telefoneLimpo.length() == 10){
+            this.telefone = telefoneLimpo;
         }
         else{
-            this.telefone = telefoneLimpo;
+            System.out.println("Tamanho de telefone inválido: " + telefoneLimpo + " TAMANHO: " + telefoneLimpo.length());
         }
     }
     public void setEmail(String email){
@@ -61,7 +62,7 @@ public class Cliente {
             throw new IllegalArgumentException("O email não pode ser nulo.");
         }
 
-        String regexEmail = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\\\.[a-zA-Z]{2,6}$";
+        String regexEmail = "^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,6}$";
 
         Pattern pattern = Pattern.compile(regexEmail);
         Matcher matcher = pattern.matcher(email);
@@ -79,8 +80,24 @@ public class Cliente {
         this.idade = idade;
     }
     public void setCnh(Cnh cnh){
-        this.cnh = cnh;
-        validadeCnh();
+        if(cnh!= null){
+            this.cnh = cnh;
+            validadeCnh();
+        }
+        else{
+            this.cnh = null;
+        }
+    }
+    public void validadeCnh(){
+        if(idade <= 49){
+            cnh.setValidade(10);
+        }
+        else if(idade == 50 || idade >= 69){
+            cnh.setValidade(5);
+        }
+        else{
+            cnh.setValidade(3);
+        }
     }
 
     public String getNome(){
@@ -101,19 +118,8 @@ public class Cliente {
     public int getIdade(){
         return idade;
     }
-    public String getCnh(){
-        return cnh.getCnhRegist();
-    }
-    public void validadeCnh(){
-        if(idade <= 49){
-            cnh.setValidade(10);
-        }
-        else if(idade == 50 || idade >= 69){
-            cnh.setValidade(5);
-        }
-        else{
-            cnh.setValidade(3);
-        }
+    public Cnh getCnh(){
+        return cnh;
     }
 
     public void alterarEndereco(String novoEndereco){
@@ -151,25 +157,25 @@ public class Cliente {
         try {
             return """
             
-                   Cliente 
+                   Cliente: 
                    CPF: """ + mascara(getCpf(), "###.###.###-##") + "\n" +
                    "Nome: " + getNome() + "\n" +
                    "Telefone: " + mascara(getTelefone(), "(##) #####-####") + "\n" +
                    "Email: " + getEmail() + "\n" +
                    "Endereço: " + getEndereco() + "\n" +
                    "Idade: " + getIdade() + "\n" +
-                   "CNH: " + cnh.toString();
+                    "" + (cnh != null? cnh.toString(): "CNH não cadastrada");
         } catch (ParseException e) {
             return """
             
-                   Cliente 
+                   Cliente:
                    CPF: """ + getCpf() + "\n" +
                    "Nome: " + getNome() + "\n" +
                    "Telefone: " + getTelefone() + "\n" +
                    "Email: " + getEmail() + "\n" +
                    "Endereço: " + getEndereco() + "\n" +
                    "Idade: " + getIdade() + "\n" +
-                   "CNH: " + cnh.toString();
+                   "" + (cnh != null? cnh.toString(): "CNH não cadastrada");
         }
     }
 }

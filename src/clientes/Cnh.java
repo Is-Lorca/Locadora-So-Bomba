@@ -140,11 +140,12 @@ public class Cnh {
     public String toString(){
         return """
         
-               CNH 
+               CNH:
                Numero de Registro: """ + getCnhRegist() + "\n" +
                "Categoria: " + getCnhCategoria() + "\n" +
                "Primeira Habilitação: " + getStringPrimeirHabil() + "\n" +
                "Validade: " + getCnhValidade() + "\n" +
-               "Ultima renovação: " + getStringUltRenov();
+               "Ultima renovação: " + getStringUltRenov() + "\n" +
+               "Esta vencida: " + (estaVencida()? "Sim": "Não");
     }
 }

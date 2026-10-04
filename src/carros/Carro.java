@@ -37,7 +37,12 @@ public abstract class Carro {
         this.placa = placa;
     }
     public void setMarca(Marca mrc) {
-        this.marca = mrc;
+        if(mrc!= null){
+            this.marca = mrc;
+        }
+        else{
+            this.marca = null;
+        }
     }
     public void setModelo(String mod) {
         this.modelo = mod;
