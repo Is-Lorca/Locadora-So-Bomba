@@ -139,7 +139,6 @@ public class Cnh {
     @Override 
     public String toString(){
         return """
-        
                CNH:
                Numero de Registro: """ + getCnhRegist() + "\n" +
                "Categoria: " + getCnhCategoria() + "\n" +

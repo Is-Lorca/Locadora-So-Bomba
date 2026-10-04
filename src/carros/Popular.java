@@ -61,6 +61,7 @@ public class Popular extends Carro{
             return 60.00;
         }
         else{
+            // Lidamos com o erro no Main
             throw new TipoSeguroInvalidoException();
         }
     }
