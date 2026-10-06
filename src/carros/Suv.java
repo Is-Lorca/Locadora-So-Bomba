@@ -9,11 +9,12 @@ public class Suv extends Carro{
     private double manutencao = 3500.00; // a cada 12 meses
     private double revisao = 850.00; // troca de oleo, etc -> a cada 10.000km
     private double tarifaBase = 300.00;
+    private String tipo = "SUV";
 
     public Suv(
         String placa, Marca mrc, String mod, int ano, String cor, int km, boolean disp, String cidAt, 
-        String ultManut, int ultRevis){
-            super(placa, mrc, mod, ano, cor, km, disp, cidAt, ultManut, ultRevis);
+        String ultManut, int ultRevis, String seguro){
+            super(placa, mrc, mod, ano, cor, km, disp, cidAt, ultManut, ultRevis, seguro);
     }
 
     public double getTarifaBase(){
@@ -26,18 +27,18 @@ public class Suv extends Carro{
     }
 
     @Override 
-    public double calcularSeguro(String tipoSeguro) throws TipoSeguroInvalidoException{
-        if(tipoSeguro == null){
+    public double calcularSeguro() throws TipoSeguroInvalidoException{
+        if(getSeguro() == null){
             throw new TipoSeguroInvalidoException("O tipo não pode ser nulo.");
         }
 
-        if(tipoSeguro.equals("Basico")){
+        if(getSeguro().equals("Basico")){
             return 105.00;
         }
-        else if (tipoSeguro.equals("Intermediario")) {
+        else if (getSeguro().equals("Intermediario")) {
             return 115.00;
         }
-        else if (tipoSeguro.equals("Premium")){
+        else if (getSeguro().equals("Premium")){
             return 140.00;
         }
         else{

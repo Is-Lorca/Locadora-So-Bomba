@@ -16,10 +16,12 @@ public abstract class Carro {
     private LocalDate ultimManutencao; // armazena data da ultima manutencao
     private int ultimRevisao; // armazena km da ultima revisao
     private boolean precisaRevisao = false;
+    private String tipo;
+    private String tipoSeguro;
 
     public Carro(
         String placa, Marca mrc, String mod, int ano, String cor, int km, boolean disp, String cidAt, 
-        String ultManut, int ultRevis) {
+        String ultManut, int ultRevis, String seguro) {
         this.setPlaca(placa);
         this.setMarca(mrc);
         this.setModelo(mod);
@@ -30,6 +32,7 @@ public abstract class Carro {
         this.setCidadeAt(cidAt);
         this.setUltManutencao(ultManut);
         this.setUltRevisao(ultRevis);
+        this.setSeguro(seguro);
     }
 
     // Setters:
@@ -80,6 +83,9 @@ public abstract class Carro {
     public void setPrecisaRevisao(boolean precisaRevisao){
         this.precisaRevisao = precisaRevisao;
     }
+    public void setSeguro(String seguro){
+        this.tipoSeguro = seguro;
+    }
     
     // Getters:
     public String getPlaca() {
@@ -120,10 +126,16 @@ public abstract class Carro {
     public boolean getPrecisaRevisao(){
         return precisaRevisao;
     }
+    public String getTipo(){
+        return tipo;
+    }
+    public String getSeguro(){
+        return tipoSeguro;
+    }
 
     // Métodos que classes filhas devem ter:
     public abstract double calcularDiaria(int dias);
-    public abstract double calcularSeguro(String tipoSeguro) throws TipoSeguroInvalidoException;
+    public abstract double calcularSeguro() throws TipoSeguroInvalidoException;
     public abstract double taxaHoraAtraso();
     public abstract void precisaManutencao(); // checa se carro precisa de manutencao e/ou revisao
     public abstract void manutencaoRealizada(String diaManutencao); // Usada para atualizar a data da manutenção

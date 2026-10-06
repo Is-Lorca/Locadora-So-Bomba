@@ -9,17 +9,18 @@ public class Popular extends Carro{
     private double manutencao = 1500.00; // a cada 12 meses
     private double revisao = 550.00; // revisões comuns (troca de oleo, etc) -> a cada 10.000 km
     private double tarifaBase = 90.00;
+    private String tipo = "Popular";
 
     public Popular(
         String placa, Marca mrc, String mod, int ano, String cor, int km, boolean disp, String cidAt, 
-        String ultManut, int ultRevis){
-            super(placa, mrc, mod, ano, cor, km, disp, cidAt, ultManut, ultRevis);
+        String ultManut, int ultRevis, String seguro){
+            super(placa, mrc, mod, ano, cor, km, disp, cidAt, ultManut, ultRevis, seguro);
     }
 
     public double getTarifaBase(){
         return tarifaBase;
     }
-
+    
     // Importante pontuar as regras de negocio aqui:
     /* Para calcular a diaria usamos (trabalhamos com quilometragem livre):
         1. Dias de aluguel;
@@ -46,18 +47,18 @@ public class Popular extends Carro{
         Premium: Todos acima + incluisão dos vidros, pneus e assistência 24h;
     */ 
     @Override 
-    public double calcularSeguro(String tipoSeguro) throws TipoSeguroInvalidoException{
-        if(tipoSeguro == null){
+    public double calcularSeguro() throws TipoSeguroInvalidoException{
+        if(getSeguro() == null){
             throw new TipoSeguroInvalidoException("O tipo não pode ser nulo.");
         }
 
-        if(tipoSeguro.equals("Basico")){
+        if(getSeguro().equals("Basico")){
             return 25.00;
         }
-        else if (tipoSeguro.equals("Intermediario")) {
+        else if (getSeguro().equals("Intermediario")) {
             return 35.00;
         }
-        else if (tipoSeguro.equals("Premium")){
+        else if (getSeguro().equals("Premium")){
             return 60.00;
         }
         else{
