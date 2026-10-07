@@ -9,36 +9,38 @@ public class Sedan extends Carro{
     private double manutencao = 2500.00; // a cada 12 meses
     private double revisao = 750.00; // troca de oleo, etc -> a cada 10.000km
     private double tarifaBase = 195.00;
-    private String tipo = "Sedan";
 
     public Sedan(
         String placa, Marca mrc, String mod, int ano, String cor, int km, boolean disp, String cidAt, 
-        String ultManut, int ultRevis, String seguro){
-            super(placa, mrc, mod, ano, cor, km, disp, cidAt, ultManut, ultRevis, seguro);
+        String ultManut, int ultRevis){
+            super(placa, mrc, mod, ano, cor, km, disp, cidAt, ultManut, ultRevis);
+            this.setTipo();
+
     }
 
     public double getTarifaBase(){
         return tarifaBase;
     }
-
+    @Override 
+    public void setTipo(){
+        this.setTipo("Sedan");;
+    }
     @Override 
     public double calcularDiaria(int dias){
         return tarifaBase * dias;
     }
 
     @Override 
-    public double calcularSeguro() throws TipoSeguroInvalidoException{
-        if(getSeguro() == null){
-            throw new TipoSeguroInvalidoException("O tipo não pode ser nulo.");
-        }
+    public double calcularSeguro(String seguro) throws TipoSeguroInvalidoException{
+        char letra = seguro.toLowerCase().charAt(0);
 
-        if(getSeguro().equals("Básico")){
+        if(letra == 'b'){
             return 65.00;
         }
-        else if (getSeguro().equals("Intermediario")) {
+        else if (letra == 'i') {
             return 75.00;
         }
-        else if (getSeguro().equals("Premium")){
+        else if (letra == 'p'){
             return 100.00;
         }
         else{

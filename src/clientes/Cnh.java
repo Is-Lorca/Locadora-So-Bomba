@@ -20,13 +20,13 @@ public class Cnh {
 
     public void setNumRegistro(String registro){
         if(registro == null){
-            System.out.println("CPF não pode ser nulo");
+            System.out.println("Registro não pode ser nulo");
         }
 
         String registroLimpo = registro.replaceAll("[^0-9]", "");
 
         if (registroLimpo.length() != 9){
-            System.out.println("Tamanho de CPF inválido");
+            System.out.println("Tamanho de Registro inválido");
         }
         else{
             this.numRegistro = registroLimpo;

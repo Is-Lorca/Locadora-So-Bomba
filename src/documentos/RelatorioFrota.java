@@ -1,6 +1,7 @@
 package documentos;
 
 import carros.Carro;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class RelatorioFrota extends Relatorio{
@@ -11,9 +12,15 @@ public class RelatorioFrota extends Relatorio{
         this.setTitulo();
         this.setCarros(carros);
     }
+     public RelatorioFrota(LocalDate data, ArrayList<Carro> carros){
+        super(data);
+        this.setTitulo();
+        this.setCarros(carros);
+    }
+
     @Override 
     public void setTitulo(){
-        super.setTitulo("         Relatório Frota");
+        super.setTitulo("Relatório Frota");
     }
     public void setCarros(ArrayList<Carro> carros){
         this.carros = carros;

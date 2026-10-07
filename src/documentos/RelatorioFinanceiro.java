@@ -1,5 +1,6 @@
 package documentos;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import locacoes.Locacao;
 
@@ -13,10 +14,16 @@ public class RelatorioFinanceiro extends Relatorio{
         this.setPeriodo(ano);
         this.setLocacoes(locacoes);
     }
+    public RelatorioFinanceiro(LocalDate data, ArrayList<Locacao> locacoes, String ano){
+        super(data);
+        this.setTitulo();
+        this.setPeriodo(ano);
+        this.setLocacoes(locacoes);
+    }
     // adicionar setters e getters 
     @Override 
     public void setTitulo(){
-        super.setTitulo("         Relatório Financeiro");
+        super.setTitulo("Relatório Financeiro");
     }
     public void setPeriodo(String ano){
         this.periodo = ano;
@@ -40,10 +47,12 @@ public class RelatorioFinanceiro extends Relatorio{
         }
         return receita;
     }
-    public int totaLocacoes(){
+    public int totaLocacoes(){ // apenas as que concluiram 
         int totalLocacao = 0;
         for(int i = 0; i < locacoes.size(); i++) {
-            totalLocacao ++;
+            if(locacoes.get(i).getStatus().equals("Finalizado")){
+                totalLocacao ++;
+            }
         }
         return totalLocacao;
     }

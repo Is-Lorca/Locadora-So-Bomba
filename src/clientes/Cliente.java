@@ -35,11 +35,11 @@ public class Cliente {
 
         String cpfLimpo = cpf.replaceAll("[^0-9]", "");
 
-        if (cpfLimpo.length() != 11 ){
-            System.out.println("Tamanho de CPF inválido");
+        if (cpfLimpo.length() == 11 ){
+            this.cpf = cpfLimpo;
         }
         else{
-            this.cpf = cpfLimpo;
+            System.out.println("Tamanho de CPF inválido");
         }
     }
     public void setTelefone(String telefone){ 
@@ -92,7 +92,7 @@ public class Cliente {
         if(idade <= 49){
             cnh.setValidade(10);
         }
-        else if(idade == 50 || idade >= 69){
+        else if(idade >= 50 || idade <= 69){
             cnh.setValidade(5);
         }
         else{

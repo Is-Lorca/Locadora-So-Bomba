@@ -1,5 +1,6 @@
 package documentos;
 
+import exceptions.TipoSeguroInvalidoException;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -17,9 +18,16 @@ public class RelatorioLocacao extends Relatorio{
         this.setPeriodoFinal(periodoFinal);
         this.setLocacoes(locacoes);
     }
+    public RelatorioLocacao(LocalDate dataGeracao, String periodoInicial, String periodoFinal, ArrayList<Locacao> locacoes){
+        super(dataGeracao);
+        this.setTitulo();
+        this.setPeriodoInicial(periodoInicial);
+        this.setPeriodoFinal(periodoFinal);
+        this.setLocacoes(locacoes);
+    }
     @Override 
     public void setTitulo(){
-        super.setTitulo("         Relatório Locação");
+        super.setTitulo("Relatório Locação\n");
     }
     public void setPeriodoInicial(String prdInicial){
         DateTimeFormatter formata = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -56,13 +64,20 @@ public class RelatorioLocacao extends Relatorio{
         texto += getTitulo();
         texto += "==================================================\n";
         texto += "Período: ";
-        texto += periodoInicial + " --> " + periodoFinal + "\n";
+        texto += periodoInicial + " --> " + periodoFinal;
+        texto += "\n...............................................\n";
         for(int i = 0; i < locacoes.size(); i++){
-            texto += "Locação: " + i + "\n";
+            texto += "Locação: " + locacoes.get(i).getNumLocacao() + "\n";
             texto += "Cliente: " + locacoes.get(i).getCliente().getNome() + "\n";
             texto += "Veículo: " + locacoes.get(i).getCarro().getTipo() + " -- " + locacoes.get(i).getCarro().getModelo() + "\n";
+            try {
+                texto += "Seguro: " + locacoes.get(i).getSeguro() + " - Preço: R$" + locacoes.get(i).getCarro().calcularSeguro(locacoes.get(i).getSeguro()) + "\n";
+            } catch (TipoSeguroInvalidoException ex) {
+                texto += "Seguro: " + locacoes.get(i).getSeguro() + "\n";
+            }
+            texto += "Status: " + locacoes.get(i).getStatus() + "\n";
             texto += "Valor: R$" + locacoes.get(i).getValorTotal() + "\n";
-            texto += "\n";
+            texto += "...............................................\n";
         }
         return texto;
     }

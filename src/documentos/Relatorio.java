@@ -11,16 +11,18 @@ public abstract class Relatorio implements Impressao{
         this.setDataGeracao(dataGeracao);
         this.setTitulo();
     }
+    public Relatorio(LocalDate dataGeracao){
+        this.setDDataGeracao(dataGeracao);
+        this.setTitulo();
+    }
 
     public void setDataGeracao(String data){
-        if(!data.equals("")){
-            DateTimeFormatter formata = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            LocalDate dataNova = LocalDate.parse(data, formata);
-            this.dataGeracao = dataNova;
-        }
-        else{
-            this.dataGeracao = LocalDate.now();
-        }
+        DateTimeFormatter formata = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        LocalDate dataNova = LocalDate.parse(data, formata);
+        this.dataGeracao = dataNova;
+    }
+     public void setDDataGeracao(LocalDate data){
+        this.dataGeracao = data;
     }
     protected void setTitulo(String titulo) {
         this.titulo = titulo;
@@ -38,6 +40,18 @@ public abstract class Relatorio implements Impressao{
     }
     public String getTitulo(){
         return titulo;
+    }
+    
+    @Override 
+    public boolean equals(Object obj){
+        Relatorio relatorio = Relatorio.class.cast(obj);
+        if(this.getDataGeracao().equals(relatorio.getDataGeracao()) &&
+            this.getTitulo().equals(relatorio.getTitulo())){
+                return true;
+            }
+        else{
+            return false;
+        }
     }
 
 }
