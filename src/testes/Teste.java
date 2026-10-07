@@ -6,20 +6,22 @@ import carros.Popular;
 import clientes.Cliente;
 import clientes.Cnh;
 import documentos.Contrato;
-import exceptions.CNHVencidaException;
-import exceptions.TipoSeguroInvalidoException;
-import exportacao.GerarPdf;
-import funcionarios.Funcionario;
-import funcionarios.Login;
-import java.util.ArrayList;
-import locacoes.Locacao;
 import documentos.Relatorio;
 import documentos.RelatorioFinanceiro;
 import documentos.RelatorioFrota;
 import documentos.RelatorioLocacao;
+import exceptions.CNHVencidaException;
+import exceptions.TipoSeguroInvalidoException;
+import exceptions.VeiculoIndisponivelException;
+import exportacao.GerarPdf;
+import funcionarios.Funcionario;
+import funcionarios.Login;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import locacoes.Locacao;
 
 public class Teste {
-    public static void main(String[] args) throws TipoSeguroInvalidoException, CNHVencidaException{
+    public static void main(String[] args) throws TipoSeguroInvalidoException, CNHVencidaException, VeiculoIndisponivelException{
         // Lidando com Marca + Carros
         ArrayList<Marca> marcas = new ArrayList<>();
         Marca marca = new Marca("Renault");
