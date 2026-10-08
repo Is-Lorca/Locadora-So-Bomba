@@ -4,18 +4,23 @@ import java.text.ParseException;
 import javax.swing.text.MaskFormatter;
 
 public class Funcionario {
+    private int idFuncionario;
     private Login funcLogin;
     private String nome;
     private String cpf;
     private String telefone;
 
-    public Funcionario(Login user, String nome, String cpf, String telefone){
+    public Funcionario(int id, Login user, String nome, String cpf, String telefone){
+        this.setIdFunc(id);
         this.setFuncLogin(user);
         this.setNome(nome);
         this.setCpf(cpf);
         this.setTelefone(telefone);
     }
 
+    public void setIdFunc(int idFuncionario){
+        this.idFuncionario = idFuncionario;
+    }
     public void setFuncLogin(Login user){
         this.funcLogin = user;
     }
@@ -64,6 +69,9 @@ public class Funcionario {
         }
     }
 
+    public int getIdFuncionario(){
+        return idFuncionario;
+    }
     public Login getFuncLogin(){
         return funcLogin;
     }

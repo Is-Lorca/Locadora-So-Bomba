@@ -57,10 +57,11 @@ public class RelatorioFinanceiro extends Relatorio{
         return totalLocacao;
     }
     public double mediaLocacao(){
-        double receita = receita();
-        int locacoes = totaLocacoes();
-        double media = receita/locacoes;
-        return media;
+        int total = totaLocacoes();
+        if(total == 0){
+            return 0;
+        }
+        return receita() / total;
     }
 
     @Override 

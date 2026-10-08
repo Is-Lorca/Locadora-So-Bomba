@@ -11,13 +11,13 @@ import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
 public class Locacao {
-    // criando especie de Id
-    private static int contador = 0;
-
-    private Cliente cliente;
     private int numeroLocacao;
-    private Carro carro;
-    private Funcionario funcionario;
+    private transient Cliente cliente;
+    private transient Carro carro;
+    private transient Funcionario funcionario;
+    private int idCliente;
+    private int idCarro;
+    private int idFuncionario;
     private LocalDate dataRetirada; // quando tirou o carro
     private LocalDate dataPrevista; // quando deve devolver
     private LocalDate dataDevolucaoReal;
@@ -28,9 +28,9 @@ public class Locacao {
     private boolean adicionalAtraso;
     private String seguro;
 
-    public Locacao(Cliente cliente, Carro carro, Funcionario funcionario, String dataRetirada, String dataPrevista, String seguro){
+    public Locacao(int id, Cliente cliente, Carro carro, Funcionario funcionario, String dataRetirada, String dataPrevista, String seguro){
+        this.setIdLocacao(id);
         this.setCliente(cliente);
-        this.numeroLocacao = ++contador;
         this.setCarro(carro);
         this.setFuncionario(funcionario);
         this.setDataRetirada(dataRetirada);
@@ -43,15 +43,38 @@ public class Locacao {
         this.setSeguro(seguro);
     }
     
+    public void setIdLocacao(int id){
+        this.numeroLocacao = id;
+    }
     public void setCliente(Cliente cliente){
+        if(cliente != null){
+            this.idCliente = cliente.getIdCliente();
+        }
+
         this.cliente = cliente;
     }
     public void setCarro(Carro carro){
+        if(carro != null){
+            this.idCarro = carro.getIdCarro();
+        }
+
         this.carro = carro;
-        carro.setDisp(false);
     }
     public void setFuncionario(Funcionario funcionario){
+        if(funcionario != null){
+            this.idFuncionario = funcionario.getIdFuncionario();
+        }
+        
         this.funcionario = funcionario;
+    }
+    public void setIdCliente(int idCliente) {
+        this.idCliente = idCliente;
+    }
+    public void setIdCarro(int idCarro) {
+        this.idCarro = idCarro;
+    }
+    public void setIdFuncionario(int idFuncionario) {
+        this.idFuncionario = idFuncionario;
     }
     public void setDataRetirada(String dataRetirada){
         DateTimeFormatter formata = DateTimeFormatter.ofPattern("dd/MM/yyyy");
@@ -91,18 +114,27 @@ public class Locacao {
     public void setSeguro(String seguro){
         this.seguro = seguro;
     }
-
+    
+    public int getIdLocacao(){
+        return numeroLocacao;
+    }
     public Cliente getCliente(){
         return cliente;
-    }
-    public int getNumLocacao(){
-        return numeroLocacao;
     }
     public Carro getCarro(){
         return carro;
     }
     public Funcionario getFuncionario(){
         return funcionario;
+    }
+    public int getIdCliente() {
+        return idCliente;
+    }
+    public int getIdCarro() {
+        return idCarro;
+    }
+    public int getIdFuncionario() {
+        return idFuncionario;
     }
     public LocalDate getDataRetirada(){
         return dataRetirada;
@@ -208,7 +240,6 @@ public class Locacao {
         setStatus(novoStatus);
         carro.alterarDisponibilidade();
     }
-
     public void calcularValorTotal() throws TipoSeguroInvalidoException{
         int dias = calcularDias(dataRetirada, dataPrevista);
         double tarifaDia = carro.calcularDiaria(dias);
@@ -229,7 +260,7 @@ public class Locacao {
     public boolean equals(Object obj){
         Locacao locacao = Locacao.class.cast(obj);
         if(this.getCliente().getCpf().equals(locacao.getCliente().getCpf()) &&
-            this.getNumLocacao() == locacao.getNumLocacao() &&
+            this.getIdLocacao() == locacao.getIdLocacao() &&
             this.getFuncionario().getCpf().equals(locacao.getFuncionario().getCpf()) &&
             this.getCarro().getPlaca().equals(locacao.getCarro().getPlaca()) &&
             this.getDataPrevista().equals(locacao.getDataPrevista())){
@@ -244,7 +275,7 @@ public class Locacao {
     public String toString(){
         return """
                 Locacao
-                Numero: """ + getNumLocacao() + "\n" +
+                Numero: """ + getIdLocacao() + "\n" +
                 "Cliente: " + getCliente().getNome() + "\n" +
                 "Carro: " + getCarro().getModelo() + "\n" +
                 "-> Placa: " + getCarro().getPlaca() + "\n" +

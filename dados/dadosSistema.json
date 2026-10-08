@@ -1,0 +1,216 @@
+{
+  "proximoIdMarca": 10,
+  "proximoIdCarro": 5,
+  "proximoIdCliente": 2,
+  "proximoIdFuncionario": 2,
+  "proximoIdLocacao": 5,
+  "proximoIdContrato": 4,
+  "marcas": [
+    {
+      "idMarca": 1,
+      "nome": "Chery"
+    },
+    {
+      "idMarca": 2,
+      "nome": "Lifan"
+    },
+    {
+      "idMarca": 3,
+      "nome": "Ford"
+    },
+    {
+      "idMarca": 4,
+      "nome": "Renault"
+    },
+    {
+      "idMarca": 5,
+      "nome": "Fiat"
+    },
+    {
+      "idMarca": 6,
+      "nome": "Jeep"
+    },
+    {
+      "idMarca": 7,
+      "nome": "Peugeot"
+    },
+    {
+      "idMarca": 8,
+      "nome": "Volkswagen"
+    },
+    {
+      "idMarca": 9,
+      "nome": "Chevrolet"
+    }
+  ],
+  "carros": [
+    {
+      "manutencao": 1500.0,
+      "revisao": 550.0,
+      "tarifaBase": 90.0,
+      "idCarro": 1,
+      "placa": "AB14",
+      "idMarca": 4,
+      "modelo": "Kwid",
+      "ano": 2018,
+      "cor": "Preto",
+      "quilometragem": 120,
+      "disponivel": true,
+      "cidadeAtual": "Americana",
+      "ultimRevisao": 0,
+      "precisaRevisao": false,
+      "tipo": "Popular"
+    },
+    {
+      "manutencao": 1500.0,
+      "revisao": 550.0,
+      "tarifaBase": 90.0,
+      "idCarro": 2,
+      "placa": "JK90",
+      "idMarca": 5,
+      "modelo": "Mobi",
+      "ano": 2016,
+      "cor": "Vermelho",
+      "quilometragem": 5000,
+      "disponivel": true,
+      "cidadeAtual": "Jafa",
+      "ultimRevisao": 0,
+      "precisaRevisao": false,
+      "tipo": "Popular"
+    },
+    {
+      "manutencao": 3500.0,
+      "revisao": 850.0,
+      "tarifaBase": 300.0,
+      "idCarro": 3,
+      "placa": "NK78",
+      "idMarca": 7,
+      "modelo": "2008",
+      "ano": 2015,
+      "cor": "Branco",
+      "quilometragem": 10,
+      "disponivel": true,
+      "cidadeAtual": "Pompeia",
+      "ultimRevisao": 0,
+      "precisaRevisao": false,
+      "tipo": "SUV"
+    },
+    {
+      "manutencao": 2500.0,
+      "revisao": 750.0,
+      "tarifaBase": 195.0,
+      "idCarro": 4,
+      "placa": "KL30",
+      "idMarca": 5,
+      "modelo": "Marea",
+      "ano": 2007,
+      "cor": "Cinza",
+      "quilometragem": 1200,
+      "disponivel": true,
+      "cidadeAtual": "Marilia",
+      "ultimRevisao": 0,
+      "precisaRevisao": false,
+      "tipo": "Sedan"
+    }
+  ],
+  "clientes": [
+    {
+      "idCliente": 1,
+      "nome": "Fernando Cardoso",
+      "cpf": "12345678900",
+      "telefone": "11949330000",
+      "email": "fernandcard@gmail.com",
+      "endereco": "Rua Braga",
+      "idade": 25,
+      "cnh": {
+        "numRegistro": "123456789",
+        "categoria": "AB",
+        "dataPrimeiraHabil": "16/09/2000",
+        "dataUltRenovacao": "16/08/2020",
+        "validade": 10
+      }
+    }
+  ],
+  "funcionarios": [
+    {
+      "idFuncionario": 1,
+      "funcLogin": {
+        "usuario": 12345,
+        "senha": 12345678
+      },
+      "nome": "Isis Lorca",
+      "cpf": "11111111111",
+      "telefone": "00000000000"
+    }
+  ],
+  "locacoes": [
+    {
+      "numeroLocacao": 2,
+      "idCliente": 1,
+      "idCarro": 1,
+      "idFuncionario": 1,
+      "dataRetirada": "20/10/2026",
+      "dataPrevista": "25/10/2026",
+      "kmRetirada": 0,
+      "kmDevolucao": 0,
+      "status": "Finalizado",
+      "valorTotal": 601.6,
+      "adicionalAtraso": false,
+      "seguro": "Intermediário"
+    },
+    {
+      "numeroLocacao": 3,
+      "idCliente": 1,
+      "idCarro": 1,
+      "idFuncionario": 1,
+      "dataRetirada": "10/10/2026",
+      "dataPrevista": "12/10/2026",
+      "kmRetirada": 100,
+      "kmDevolucao": 0,
+      "status": "Finalizado",
+      "valorTotal": 552.4,
+      "adicionalAtraso": false,
+      "seguro": "Basico"
+    },
+    {
+      "numeroLocacao": 4,
+      "idCliente": 1,
+      "idCarro": 2,
+      "idFuncionario": 1,
+      "dataRetirada": "01/11/2026",
+      "dataPrevista": "03/11/2026",
+      "kmRetirada": 0,
+      "kmDevolucao": 0,
+      "status": "Finalizado",
+      "valorTotal": 455.0,
+      "adicionalAtraso": false,
+      "seguro": "Premium"
+    }
+  ],
+  "contratos": [
+    {
+      "titulo": "Contrato de Locação\n\n",
+      "numeroContrato": 1,
+      "idLocacao": 2,
+      "dataEmissao": "07/10/2026",
+      "termos": "CLÁUSULA 1 - DO OBJETO\nO presente contrato tem como objeto a locação do veículo descrito neste documento ao LOCATÁRIO, pelo período previamente acordado entre as partes.\n\nCLÁUSULA 2 - DA UTILIZAÇÃO DO VEÍCULO\nO veículo deverá ser utilizado exclusivamente para fins lícitos, respeitando integralmente as leis de trânsito vigentes.\n- É proibido utilizar o veículo para competições ou atividades esportivas.\n- É proibido transportar carga acima da capacidade permitida.\n- É proibido emprestar ou ceder o veículo a terceiros não autorizados pela locadora.\n\nCLÁUSULA 3 - DA HABILITAÇÃO\nO LOCATÁRIO declara possuir Carteira Nacional de Habilitação (CNH) válida e compatível com a categoria do veículo locado.\nCaso seja constatada irregularidade na habilitação, a locadora poderá cancelar a locação imediatamente.\n\nCLÁUSULA 4 - DO ESTADO DO VEÍCULO\nO LOCATÁRIO declara receber o veículo em perfeitas condições de funcionamento, conservação e limpeza, conforme vistoria realizada no momento da retirada.\n\nCLÁUSULA 5 - DA DEVOLUÇÃO\nO veículo deverá ser devolvido na data e horário estabelecidos, nas mesmas condições em que foi entregue e acompanhado de todos os acessórios fornecidos.\nA devolução em local diferente do contratado poderá gerar cobrança adicional.\n\nCLÁUSULA 6 - DA QUILOMETRAGEM\nA quilometragem será registrada no momento da retirada e da devolução do veículo.\nQualquer adulteração ou inconsistência poderá acarretar cobrança de multas e demais medidas cabíveis.\n\nCLÁUSULA 7 - DAS MULTAS E INFRAÇÕES\nTodas as multas, infrações de trânsito e demais penalidades ocorridas durante o período da locação serão de responsabilidade do LOCATÁRIO.\n\nCLÁUSULA 8 - DOS DANOS\nO LOCATÁRIO compromete-se a comunicar imediatamente qualquer acidente, dano ou defeito ocorrido durante a utilização do veículo.\nQuando não cobertos pelo seguro contratado, os custos de reparo serão de responsabilidade do LOCATÁRIO.\n\nCLÁUSULA 9 - DO SEGURO\nO seguro contratado possuirá cobertura conforme a modalidade escolhida no ato da locação.\nSituações decorrentes de dolo, negligência ou uso indevido do veículo poderão não estar cobertas.\n\nCLÁUSULA 10 - DO CANCELAMENTO\nA locadora poderá cancelar a locação caso sejam constatadas informações falsas, inadimplência ou descumprimento das cláusulas deste contrato.\n\nCLÁUSULA 11 - DA RESPONSABILIDADE\nA locadora não se responsabiliza por objetos pessoais deixados no interior do veículo.\n\nCLÁUSULA 12 - DO FORO\nFica eleito o foro da comarca onde a locação foi realizada para dirimir eventuais dúvidas oriundas deste contrato.\n\nDECLARAÇÃO FINAL\nO LOCATÁRIO declara ter lido, compreendido e aceitado todas as cláusulas e condições estabelecidas neste contrato.\n\n\nASSINATURAS\n\n________________________________________\n   Fernando Cardoso\nLOCATÁRIO\n\n________________________________________\nREPRESENTANTE DA LOCADORA\n\n________________________________________\nDATA: 07/10/2026\n",
+      "assinado": false
+    },
+    {
+      "titulo": "Contrato de Locação\n\n",
+      "numeroContrato": 2,
+      "idLocacao": 3,
+      "dataEmissao": "07/10/2026",
+      "termos": "CLÁUSULA 1 - DO OBJETO\nO presente contrato tem como objeto a locação do veículo descrito neste documento ao LOCATÁRIO, pelo período previamente acordado entre as partes.\n\nCLÁUSULA 2 - DA UTILIZAÇÃO DO VEÍCULO\nO veículo deverá ser utilizado exclusivamente para fins lícitos, respeitando integralmente as leis de trânsito vigentes.\n- É proibido utilizar o veículo para competições ou atividades esportivas.\n- É proibido transportar carga acima da capacidade permitida.\n- É proibido emprestar ou ceder o veículo a terceiros não autorizados pela locadora.\n\nCLÁUSULA 3 - DA HABILITAÇÃO\nO LOCATÁRIO declara possuir Carteira Nacional de Habilitação (CNH) válida e compatível com a categoria do veículo locado.\nCaso seja constatada irregularidade na habilitação, a locadora poderá cancelar a locação imediatamente.\n\nCLÁUSULA 4 - DO ESTADO DO VEÍCULO\nO LOCATÁRIO declara receber o veículo em perfeitas condições de funcionamento, conservação e limpeza, conforme vistoria realizada no momento da retirada.\n\nCLÁUSULA 5 - DA DEVOLUÇÃO\nO veículo deverá ser devolvido na data e horário estabelecidos, nas mesmas condições em que foi entregue e acompanhado de todos os acessórios fornecidos.\nA devolução em local diferente do contratado poderá gerar cobrança adicional.\n\nCLÁUSULA 6 - DA QUILOMETRAGEM\nA quilometragem será registrada no momento da retirada e da devolução do veículo.\nQualquer adulteração ou inconsistência poderá acarretar cobrança de multas e demais medidas cabíveis.\n\nCLÁUSULA 7 - DAS MULTAS E INFRAÇÕES\nTodas as multas, infrações de trânsito e demais penalidades ocorridas durante o período da locação serão de responsabilidade do LOCATÁRIO.\n\nCLÁUSULA 8 - DOS DANOS\nO LOCATÁRIO compromete-se a comunicar imediatamente qualquer acidente, dano ou defeito ocorrido durante a utilização do veículo.\nQuando não cobertos pelo seguro contratado, os custos de reparo serão de responsabilidade do LOCATÁRIO.\n\nCLÁUSULA 9 - DO SEGURO\nO seguro contratado possuirá cobertura conforme a modalidade escolhida no ato da locação.\nSituações decorrentes de dolo, negligência ou uso indevido do veículo poderão não estar cobertas.\n\nCLÁUSULA 10 - DO CANCELAMENTO\nA locadora poderá cancelar a locação caso sejam constatadas informações falsas, inadimplência ou descumprimento das cláusulas deste contrato.\n\nCLÁUSULA 11 - DA RESPONSABILIDADE\nA locadora não se responsabiliza por objetos pessoais deixados no interior do veículo.\n\nCLÁUSULA 12 - DO FORO\nFica eleito o foro da comarca onde a locação foi realizada para dirimir eventuais dúvidas oriundas deste contrato.\n\nDECLARAÇÃO FINAL\nO LOCATÁRIO declara ter lido, compreendido e aceitado todas as cláusulas e condições estabelecidas neste contrato.\n\n\nASSINATURAS\n\n________________________________________\n   Fernando Cardoso\nLOCATÁRIO\n\n________________________________________\nREPRESENTANTE DA LOCADORA\n\n________________________________________\nDATA: 07/10/2026\n",
+      "assinado": false
+    },
+    {
+      "titulo": "Contrato de Locação\n\n",
+      "numeroContrato": 3,
+      "idLocacao": 4,
+      "dataEmissao": "07/10/2026",
+      "termos": "CLÁUSULA 1 - DO OBJETO\nO presente contrato tem como objeto a locação do veículo descrito neste documento ao LOCATÁRIO, pelo período previamente acordado entre as partes.\n\nCLÁUSULA 2 - DA UTILIZAÇÃO DO VEÍCULO\nO veículo deverá ser utilizado exclusivamente para fins lícitos, respeitando integralmente as leis de trânsito vigentes.\n- É proibido utilizar o veículo para competições ou atividades esportivas.\n- É proibido transportar carga acima da capacidade permitida.\n- É proibido emprestar ou ceder o veículo a terceiros não autorizados pela locadora.\n\nCLÁUSULA 3 - DA HABILITAÇÃO\nO LOCATÁRIO declara possuir Carteira Nacional de Habilitação (CNH) válida e compatível com a categoria do veículo locado.\nCaso seja constatada irregularidade na habilitação, a locadora poderá cancelar a locação imediatamente.\n\nCLÁUSULA 4 - DO ESTADO DO VEÍCULO\nO LOCATÁRIO declara receber o veículo em perfeitas condições de funcionamento, conservação e limpeza, conforme vistoria realizada no momento da retirada.\n\nCLÁUSULA 5 - DA DEVOLUÇÃO\nO veículo deverá ser devolvido na data e horário estabelecidos, nas mesmas condições em que foi entregue e acompanhado de todos os acessórios fornecidos.\nA devolução em local diferente do contratado poderá gerar cobrança adicional.\n\nCLÁUSULA 6 - DA QUILOMETRAGEM\nA quilometragem será registrada no momento da retirada e da devolução do veículo.\nQualquer adulteração ou inconsistência poderá acarretar cobrança de multas e demais medidas cabíveis.\n\nCLÁUSULA 7 - DAS MULTAS E INFRAÇÕES\nTodas as multas, infrações de trânsito e demais penalidades ocorridas durante o período da locação serão de responsabilidade do LOCATÁRIO.\n\nCLÁUSULA 8 - DOS DANOS\nO LOCATÁRIO compromete-se a comunicar imediatamente qualquer acidente, dano ou defeito ocorrido durante a utilização do veículo.\nQuando não cobertos pelo seguro contratado, os custos de reparo serão de responsabilidade do LOCATÁRIO.\n\nCLÁUSULA 9 - DO SEGURO\nO seguro contratado possuirá cobertura conforme a modalidade escolhida no ato da locação.\nSituações decorrentes de dolo, negligência ou uso indevido do veículo poderão não estar cobertas.\n\nCLÁUSULA 10 - DO CANCELAMENTO\nA locadora poderá cancelar a locação caso sejam constatadas informações falsas, inadimplência ou descumprimento das cláusulas deste contrato.\n\nCLÁUSULA 11 - DA RESPONSABILIDADE\nA locadora não se responsabiliza por objetos pessoais deixados no interior do veículo.\n\nCLÁUSULA 12 - DO FORO\nFica eleito o foro da comarca onde a locação foi realizada para dirimir eventuais dúvidas oriundas deste contrato.\n\nDECLARAÇÃO FINAL\nO LOCATÁRIO declara ter lido, compreendido e aceitado todas as cláusulas e condições estabelecidas neste contrato.\n\n\nASSINATURAS\n\n________________________________________\n   Fernando Cardoso\nLOCATÁRIO\n\n________________________________________\nREPRESENTANTE DA LOCADORA\n\n________________________________________\nDATA: 07/10/2026\n",
+      "assinado": true
+    }
+  ]
+}

@@ -13,9 +13,6 @@ public class Login {
         if(user != null){
             this.usuario = user;
         }
-        else{
-            System.out.println("Usuario invalido, favor escrever apenas números.");
-        }
     }
     public void setSenha(int senha){
         int digitos = String.valueOf(Math.abs(senha)).length();
@@ -35,7 +32,7 @@ public class Login {
     }
 
     public boolean autenticar(Integer userEntra, int senhaEntra){
-        if(userEntra.equals(getUsuario()) || senhaEntra == getSenha()){
+        if(userEntra.equals(getUsuario()) && senhaEntra == getSenha()){
             return true;
         }
         else{

@@ -16,18 +16,18 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import documentos.Contrato;
 
 public class GerarPdf {
-    private static int contador = 0;
     // Variáveis de controle de página que precisam ser acessadas globalmente no método
     private PDPageContentStream contentStreamAtual = null;
     private float yAtual = 750; // Controla a altura atual do cursor
     private final float limiteRodape = 50f; // Quando o Y chegar aqui, cria uma nova página
     private final float espacamentoLinha = 16f; // O valor do leading
-    private int numeroPdf;
+    
 
     public GerarPdf() {
-        this.numeroPdf = ++contador;
+
     }
 
     public void gerar(Impressao criado){
@@ -35,10 +35,10 @@ public class GerarPdf {
 
         // Divide a string onde existe o \n
         String[] linhas = texto.split("\n");
-
+        
         // Pega o título do nosso arquivo
         String titulo = linhas[0];
-
+        
         // Cria as "diretrizes" para nomearmos o documento 
         String nomePdf = titulo.replace(" ", "");
         LocalDate dataAtual = LocalDate.now();
@@ -46,7 +46,14 @@ public class GerarPdf {
         String data = dataAtual.format(formata);
         
         // Cria o caminho do arquivo
-        String caminhoArquivo = nomePdf + "-" + "n°"+ numeroPdf + "_" + data + ".pdf";
+        String caminhoArquivo;
+        if(criado instanceof Contrato){
+            Contrato contrato = (Contrato) criado;
+            caminhoArquivo = nomePdf + "-N°" + contrato.getNumeroContrato() + "_" + data + ".pdf";
+        }
+        else{
+            caminhoArquivo = nomePdf + "_" + data + ".pdf";
+        }
     
         try (PDDocument documento = new PDDocument()) {
             PDPage pagina = new PDPage();
@@ -142,8 +149,9 @@ public class GerarPdf {
             contentStreamAtual.endText();
             contentStreamAtual.close();
 
+            caminhoArquivo = verificarArquivo(caminhoArquivo);
             documento.save(new File(caminhoArquivo));
-            System.out.println("PDF gerado com sucesso em: " + new File(caminhoArquivo).getAbsolutePath());
+            System.out.println("PDF gerado com sucesso em: " + new File(caminhoArquivo).getPath());
             
         } catch (Exception e) {
             System.err.println("Erro ao manipular o PDF: " + e.getMessage());
@@ -198,6 +206,21 @@ public class GerarPdf {
         }
 
         return linhasResultantes;
+    }
+
+    private String verificarArquivo(String caminho){
+        File arquivo = new File(caminho);
+        int contadorArquivo = 1;
+        String novoCaminho = caminho;
+
+        while(arquivo.exists()){
+            String nome = caminho.substring(0, caminho.lastIndexOf("."));
+            novoCaminho = nome + "_" + contadorArquivo + ".pdf";
+            arquivo = new File(novoCaminho);
+            contadorArquivo++;
+        }
+
+        return novoCaminho;
     }
 
     // Método utilitário apenas para garantir segurança no trim() das strings

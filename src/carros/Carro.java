@@ -5,8 +5,10 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 public abstract class Carro {
+    private int idCarro;
     private String placa;
-    private Marca marca;
+    private transient Marca marca;
+    private int idMarca;
     private String modelo;
     private int ano;
     private String cor;
@@ -19,8 +21,9 @@ public abstract class Carro {
     private String tipo;
 
     public Carro(
-        String placa, Marca mrc, String mod, int ano, String cor, int km, boolean disp, String cidAt, 
+        int id, String placa, Marca mrc, String mod, int ano, String cor, int km, boolean disp, String cidAt, 
         String ultManut, int ultRevis) {
+        this.setIdCarro(id);
         this.setPlaca(placa);
         this.setMarca(mrc);
         this.setModelo(mod);
@@ -35,16 +38,21 @@ public abstract class Carro {
     }
 
     // Setters:
+    public void setIdCarro(int idCarro){
+        this.idCarro = idCarro;
+    }
     public void setPlaca(String placa) {
         this.placa = placa;
     }
     public void setMarca(Marca mrc) {
-        if(mrc!= null){
-            this.marca = mrc;
+        this.marca = mrc;
+        if(mrc != null){
+            this.idMarca = marca.getIdMarca();
         }
-        else{
-            this.marca = null;
-        }
+            
+    }
+    public void setIdMarca(int idMarca){
+        this.idMarca = idMarca;
     }
     public void setModelo(String mod) {
         this.modelo = mod;
@@ -90,6 +98,12 @@ public abstract class Carro {
     }
 
     // Getters:
+    public int getIdCarro(){
+        return idCarro;
+    }
+    public int getIdMarca() {
+        return idMarca;
+    }
     public String getPlaca() {
         return placa;
     }

@@ -6,6 +6,7 @@ import java.util.regex.Pattern;
 import javax.swing.text.MaskFormatter;
 
 public class Cliente {
+    private int idCliente;
     private String nome;
     private String cpf; 
     private String telefone; 
@@ -15,7 +16,8 @@ public class Cliente {
     private Cnh cnh;
         
     public Cliente(
-        String nome, String cpf, String telefone, String email, String endereco, int idade, Cnh cnh){
+        int id, String nome, String cpf, String telefone, String email, String endereco, int idade, Cnh cnh){
+        this.setIdCliente(id);
         this.setNome(nome);
         this.setCpf(cpf);
         this.setTelefone(telefone);
@@ -25,6 +27,9 @@ public class Cliente {
         this.setCnh(cnh);
     }
 
+    public void setIdCliente(int idCliente){
+        this.idCliente = idCliente;
+    }
     public void setNome(String nome){
         this.nome = nome;
     }
@@ -100,6 +105,9 @@ public class Cliente {
         }
     }
 
+    public int getIdCliente(){
+        return idCliente;
+    }
     public String getNome(){
         return nome;
     }

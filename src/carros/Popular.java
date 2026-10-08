@@ -11,9 +11,9 @@ public class Popular extends Carro{
     private double tarifaBase = 90.00;
 
     public Popular(
-        String placa, Marca mrc, String mod, int ano, String cor, int km, boolean disp, String cidAt, 
+        int id, String placa, Marca mrc, String mod, int ano, String cor, int km, boolean disp, String cidAt, 
         String ultManut, int ultRevis){
-            super(placa, mrc, mod, ano, cor, km, disp, cidAt, ultManut, ultRevis);
+            super(id, placa, mrc, mod, ano, cor, km, disp, cidAt, ultManut, ultRevis);
             this.setTipo();
     }
 

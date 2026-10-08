@@ -5,28 +5,37 @@ import java.time.format.DateTimeFormatter;
 import locacoes.Locacao;
 
 public class Contrato implements Impressao{
-    private static int contador = 0;
-
     private String titulo;
     private int numeroContrato;
-    private Locacao locacoes;
+    private transient Locacao locacoes; // conteudo que nao deve ser serializado -> processo de transformar um objeto da memória em uma sequência de bytes
+    private int idLocacao;
     private LocalDate dataEmissao;
     private String termos;
     private boolean assinado;
 
-    public Contrato(Locacao locacoes){
+    public Contrato(int id, Locacao locacoes){
         this.setTitulo();
-        this.numeroContrato = ++contador;
+        this.setNumeroContrato(id);
         this.setLocacoes(locacoes);
         this.setDataEmissao();
         this.setAssinado();
         this.setTermos();
     }
+
     public void setTitulo(){
         this.titulo = "Contrato de Locação\n\n";
     }
+    public void setNumeroContrato(int id){
+        this.numeroContrato = id;
+    }
     public void setLocacoes(Locacao locacoes){
         this.locacoes = locacoes;
+        if(locacoes != null){
+            this.idLocacao = locacoes.getIdLocacao();
+        }
+    }
+    public void setIdLocacoes(int idLocacao){
+        this.idLocacao = idLocacao;
     }
     public void setDataEmissao(){
         this.dataEmissao = LocalDate.now();
@@ -36,10 +45,7 @@ public class Contrato implements Impressao{
     }
     public void setAssinado(boolean assinado){
         this.assinado = assinado;
-    }
-    public boolean getAssinado(){
-        return assinado;
-    }
+    }  
     public void setTermos(){
         String termo = "";
         termo += 
@@ -103,7 +109,7 @@ public class Contrato implements Impressao{
             "DATA: " + getStringDataEmissao() + "\n";
         this.termos = termo;
     }
-
+    
     public String getTitulo(){
         return titulo;
     }
@@ -113,12 +119,18 @@ public class Contrato implements Impressao{
     public Locacao getLocacoes(){
         return locacoes;
     }
+    public int getIdLocacao(){
+        return idLocacao;
+    }
     public LocalDate getDataEmissao(){
         return dataEmissao;
     }
     public String getStringDataEmissao(){
         DateTimeFormatter formata = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return dataEmissao.format(formata);
+    }
+    public boolean getAssinado(){
+        return assinado;
     }
     public String getTermos(){
         return termos;
@@ -127,12 +139,11 @@ public class Contrato implements Impressao{
     public void marcarComoAssinado(){
         this.setAssinado(true);
     }
-   
+
     @Override 
     public String gerarConteudo(){
         String texto = "";
         texto += getTitulo();
-        texto += "Contrato N°" + getNumeroContrato() + "\n\n";
         texto += getTermos();
 
         return texto;

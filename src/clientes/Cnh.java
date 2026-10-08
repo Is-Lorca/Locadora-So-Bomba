@@ -115,14 +115,7 @@ public class Cnh {
         }
     }
     public int tempoDeHabilitacao() throws ArithmeticException{
-        long anosL = ChronoUnit.YEARS.between(getPrimeiraHabil(), LocalDate.now());
-        try {
-            int anos = Math.toIntExact(anosL);
-            return anos;
-        } catch (ArithmeticException e) {
-            System.out.println("Não foi possível converter o valor em Long para Int");
-        }
-        return 0;
+        return (int) ChronoUnit.YEARS.between(getPrimeiraHabil(),LocalDate.now());
     }
 
     @Override 

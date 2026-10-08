@@ -67,7 +67,7 @@ public class RelatorioLocacao extends Relatorio{
         texto += periodoInicial + " --> " + periodoFinal;
         texto += "\n...............................................\n";
         for(int i = 0; i < locacoes.size(); i++){
-            texto += "Locação: " + locacoes.get(i).getNumLocacao() + "\n";
+            texto += "Locação: " + locacoes.get(i).getIdLocacao() + "\n";
             texto += "Cliente: " + locacoes.get(i).getCliente().getNome() + "\n";
             texto += "Veículo: " + locacoes.get(i).getCarro().getTipo() + " -- " + locacoes.get(i).getCarro().getModelo() + "\n";
             try {

@@ -11,9 +11,9 @@ public class Sedan extends Carro{
     private double tarifaBase = 195.00;
 
     public Sedan(
-        String placa, Marca mrc, String mod, int ano, String cor, int km, boolean disp, String cidAt, 
+        int id, String placa, Marca mrc, String mod, int ano, String cor, int km, boolean disp, String cidAt, 
         String ultManut, int ultRevis){
-            super(placa, mrc, mod, ano, cor, km, disp, cidAt, ultManut, ultRevis);
+            super(id, placa, mrc, mod, ano, cor, km, disp, cidAt, ultManut, ultRevis);
             this.setTipo();
 
     }
